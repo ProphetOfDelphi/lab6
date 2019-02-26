@@ -33,6 +33,11 @@ public class Trapezoid extends Polygon
 		sideLengths.add(rightSide);
 		sideLengths.add(topBase);
 		sideLengths.add(bottomBase);
+		
+		this.leftSide = leftSide;
+		this.rightSide = rightSide;
+		this.bottomBase = bottomBase;
+		this.topBase = topBase;
 	}
 
 	/**
