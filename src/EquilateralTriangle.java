@@ -27,6 +27,7 @@ public class EquilateralTriangle extends Polygon
 		sideLengths.add(sideLength);
 		sideLengths.add(sideLength);
 		sideLengths.add(sideLength);
+		
 	}
 
 	/**
@@ -37,7 +38,7 @@ public class EquilateralTriangle extends Polygon
 	@Override
 	public double getArea()
 	{
-		// TODO: complete this...
+		return (sideLength * (sideLength * Math.sqrt(3)) / 2.0);
 	}
 
 	/**
@@ -48,6 +49,6 @@ public class EquilateralTriangle extends Polygon
 	@Override
 	public String getShapeType()
 	{
-		// TODO: complete this...
+		return "EquilateralTriangle";
 	}
 }
