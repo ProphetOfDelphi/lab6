@@ -33,7 +33,11 @@ public class ShapeTest
 	@Test
 	public void RectangleTest()
 	{
-		// TODO: complete this...
+		Shape rct = new Rectangle("Rectangle1", 3.0, 4.0);
+		Assert.assertEquals("Rectangle area incorrect.", 12.0, rct.getArea(), .0001);
+		Assert.assertEquals("Rectangle perimeter incorrect.", 14.0, rct.getPerimeter(), .0001);
+		Assert.assertEquals("Rectangle type incorrect.", "Rectangle", rct.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.", "Rectangle1", rct.getId());
 	}
 
 	/**
@@ -42,7 +46,11 @@ public class ShapeTest
 	@Test
 	public void TriangleTest()
 	{
-		// TODO: complete this...
+		Shape tri = new EquilateralTriangle("Triangle1", 3.0);
+		Assert.assertEquals("Triangle area incorrect.", 7.794, tri.getArea(), .001);
+		Assert.assertEquals("Triangle perimeter incorrect.", 9.0, tri.getPerimeter(), .0001);
+		Assert.assertEquals("Triangle type incorrect.", "EquilateralTriangle", tri.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.", "Triangle1", tri.getId());
 	}
 
 	/**
@@ -51,7 +59,11 @@ public class ShapeTest
 	@Test
 	public void TrapezoidTest()
 	{
-		// TODO: complete this...
+		Shape trap = new Trapezoid("trap1", 5.0, 5.0, 7.0, 6.0);
+		Assert.assertEquals("Trapezoid area incorrect", 32.337, trap.getArea(), .001);
+		Assert.assertEquals("Triangle perimeter incorrect.", 23.0, trap.getPerimeter(), .0001);
+		Assert.assertEquals("Trapezoid type incorrect.", "Trapezoid", trap.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.", "trap1", trap.getId());
 	}
 
 	/**
@@ -83,7 +95,13 @@ public class ShapeTest
 	@Test
 	public void CircleTest()
 	{
-		// TODO: complete this...
+		Shape circ = new Circle("Circle1", 3.0);
+		Assert.assertEquals("Ellipse area incorrect.", Math.PI*3.0*3.0, circ.getArea(),0.001);
+		Assert.assertEquals("Ellipse perimeter incorrect.",
+				2 * Math.PI * Math.sqrt((Math.pow(3, 2) + Math.pow(3, 2)) / 2),
+				circ.getPerimeter(),0.01);
+		Assert.assertEquals("Ellipse type incorrect.", "Circle",circ.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.", "Circle1", circ.getId());
 	}
 
 	/**
@@ -92,7 +110,9 @@ public class ShapeTest
 	@Test
 	public void ShapeToStringTest()
 	{
-		// TODO: complete this...
+		Shape squ = new Square("Square1", 3.0);
+		
+		Assert.assertEquals("Square\t ID = Square1\t area = 9.000\t perimeter = 12.000\t", squ.toString());
 	}
 
 	//==================================================================================================================
@@ -130,7 +150,21 @@ public class ShapeTest
 	@Test
 	public void ComparePerimeterTest()
 	{
-		// TODO: complete this...
+		Shape rect = new Rectangle("R1", 3.0,3.0);
+		Shape sqr = new Square("S1", 3.0);
+		ShapePerimeterComparator sc = new ShapePerimeterComparator();
+		Assert.assertEquals("ShapePerimeterComparator should find shapes equal.", 0, sc.compare(rect, sqr));
+		Assert.assertTrue("ShapePerimeterComparator should find shapes equal.", sc.equals(rect, sqr));
+
+        Shape rect2 = new Rectangle("R2", 1.0, 9.0);
+        Shape sqr2 = new Square("S2", 6.0);
+        Assert.assertEquals("ShapePerimeterComparator gave incorrect ordering.", -1, sc.compare(rect2, sqr2));
+        Assert.assertEquals("ShapePerimeterComparator gave incorrect ordering.", 1, sc.compare(sqr2, rect2));
+        Assert.assertFalse("ShapePerimeterComparator incorrectly finds shapes equal.", sc.equals(rect2, sqr2));
+
+        Assert.assertEquals("ShapePerimeterComparator gave incorrect ordering.", 1, sc.compare(sqr2, rect));
+        Assert.assertEquals("ShapePerimeterComparator gave incorrect ordering.", -1, sc.compare(rect, sqr2));
+        Assert.assertFalse("ShapePerimeterComparator incorrectly finds shapes equal.", sc.equals(sqr2, rect));
 	}
 
 	/**
@@ -139,6 +173,13 @@ public class ShapeTest
 	@Test
     public void NaturalCompareTest()
     {
-		// TODO: complete this...
+		Shape rect = new Rectangle("R1", 3.0,3.0);
+		Shape sqr = new Square("S1", 3.0);
+		Assert.assertEquals("ShapePerimeterComparator should find shapes equal.", -1, rect.compareTo(sqr));
+
+        Shape rect2 = new Rectangle("R2", 1.0, 9.0);
+        Shape sqr2 = new Square("S2", 5.0);
+        Assert.assertEquals("ShapeComparator incorrectly finds shapes equal.", -1, rect2.compareTo(sqr2));
+        Assert.assertEquals("ShapeComparator incorrectly finds shapes equal.", 1, sqr2.compareTo(rect));
     }
 }

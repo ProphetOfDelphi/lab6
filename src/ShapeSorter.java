@@ -16,14 +16,14 @@ public class ShapeSorter
 	/**
 	 * List of shapes to be sorted.
 	 */
-	protected ArrayList<Shape> shapes;
+	protected ArrayList<Shape> shapes = new ArrayList<Shape>(10);
 
 	/**
 	 * Constructor. Initializes member fields.
 	 */
 	public ShapeSorter()
 	{
-		ArrayList<Shape> shapes = new ArrayList<Shape>();
+		ArrayList<Shape> shapes = new ArrayList<Shape>(10);
 	}
 
 	/**
