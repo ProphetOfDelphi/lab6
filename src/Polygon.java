@@ -32,6 +32,10 @@ public abstract class Polygon extends Shape
     @Override
 	public double getPerimeter()
     {
-    	// TODO: complete this...
+    	double perimeter = 0.0;
+    	for (int x = 0; x < sideLengths.size(); ++x) {
+    		perimeter = perimeter + sideLengths.get(x);
+    	}
+    	return perimeter;
     }
 }
